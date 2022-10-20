@@ -12,6 +12,22 @@ export default function TextBox(props) {
     let newText = text.toUpperCase();
     setText(newText);
   };
+  const onLowercaseClick = () => {
+    let newText = text.toLowerCase();
+    setText(newText);
+  };
+  const onClearClick = () => {
+    setText("");
+  };
+  const onCopyClick = () => {
+    let text = document.getElementById("myTextBox");
+    text.select();
+    navigator.clipboard.writeText(text.value);
+  };
+  const onRemoveSpacesClick = () => {
+    let newText = text.split(/[ ]+/);
+    setText(newText.join(" "));
+  };
 
   return (
     <>
@@ -26,12 +42,28 @@ export default function TextBox(props) {
             rows="10"
           ></textarea>
         </div>
-        <button className="btn btn-primary" onClick={onUppercaseClick}>
-          {props.buttonText}
+        <button className="btn btn-primary mx-2" onClick={onUppercaseClick}>
+          {props.btnUpperText}
+        </button>
+        <button className="btn btn-primary mx-2" onClick={onLowercaseClick}>
+          {props.btnLowerText}
+        </button>
+        <button className="btn btn-primary mx-2" onClick={onClearClick}>
+          {props.btnClearText}
+        </button>
+        <button className="btn btn-primary mx-2" onClick={onCopyClick}>
+          {props.btnCopyText}
+        </button>
+        <button className="btn btn-primary mx-2" onClick={onRemoveSpacesClick}>
+          {props.btnRemoveSpacesText}
         </button>
       </div>
       <div className="container">
-        <p>Total {text.split(" ").length} words and {text.length} characters will take approximately {0.008 * text.split(" ").length} minutes to read whole text.</p>
+        <p>
+          Total {text.split(" ").length} words and {text.length} characters will
+          take approximately {0.008 * text.split(" ").length} minutes to read
+          whole text.
+        </p>
       </div>
     </>
   );
@@ -43,5 +75,9 @@ TextBox.propTypes = {
 
 TextBox.defaultProps = {
   heading: "Enter your text below",
-  buttonText: "Convert to Uppercase",
+  btnUpperText: "Convert to Uppercase",
+  btnLowerText: "Convert to Lowercase",
+  btnClearText: "Clear",
+  btnCopyText: "Copy",
+  btnRemoveSpacesText: "Remove Spaces",
 };
