@@ -15,19 +15,24 @@ export default function TextBox(props) {
 
   return (
     <>
-      <h1>{props.heading}</h1>
-      <div className="mb-3">
-        <textarea
-          className="form-control"
-          value={text}
-          onChange={onTextChanged}
-          id="myTextBox"
-          rows="10"
-        ></textarea>
+      <div className="container">
+        <h1>{props.heading}</h1>
+        <div className="mb-3">
+          <textarea
+            className="form-control"
+            value={text}
+            onChange={onTextChanged}
+            id="myTextBox"
+            rows="10"
+          ></textarea>
+        </div>
+        <button className="btn btn-primary" onClick={onUppercaseClick}>
+          {props.buttonText}
+        </button>
       </div>
-      <button className="btn btn-primary" onClick={onUppercaseClick}>
-        {props.buttonText}
-      </button>
+      <div className="container">
+        <p>Total {text.split(" ").length} words and {text.length} characters will take approximately {0.008 * text.split(" ").length} minutes to read whole text.</p>
+      </div>
     </>
   );
 }
