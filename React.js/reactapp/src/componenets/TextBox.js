@@ -31,7 +31,8 @@ export default function TextBox(props) {
 
   return (
     <>
-      <div className="container">
+      {/* {alert(props.mode)} */}
+      <div className="container" style={{color: props.mode === 'light' ? 'black' : 'white'}}>
         <h1>{props.heading}</h1>
         <div className="mb-3">
           <textarea
@@ -58,7 +59,7 @@ export default function TextBox(props) {
           {props.btnRemoveSpacesText}
         </button>
       </div>
-      <div className="container">
+      <div className="container" style={{color: props.mode === 'light' ? 'black' : 'white'}}>
         <p>
           Total {text.split(" ").length} words and {text.length} characters will
           take approximately {0.008 * text.split(" ").length} minutes to read
