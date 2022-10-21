@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import PropTypes from 'prop-types'
 
-export default function About(props) {
+function About(props) {
 
     const [myStyle, setMyStyle] = useState({
         color: '#fff',
@@ -139,6 +139,8 @@ export default function About(props) {
     </>
   );
 }
+
+export default About
 
 About.propType = {
     btnToggleStyleText: PropTypes.string

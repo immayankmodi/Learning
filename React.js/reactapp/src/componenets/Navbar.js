@@ -1,9 +1,9 @@
-//type "rfc" for react function based componenet
+//type "rfce" for react function based componenet
 import React from "react";
 //type "impt" to import PropTypes
 import PropTypes from "prop-types";
 
-export default function Navbar(props) {
+function Navbar(props) {
   return (
     <nav
       className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
@@ -67,6 +67,8 @@ export default function Navbar(props) {
     </nav>
   );
 }
+
+export default Navbar
 
 Navbar.propTypes = {
   title: PropTypes.string.isRequired,

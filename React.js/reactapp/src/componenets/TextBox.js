@@ -1,7 +1,7 @@
 import React, { useState } from "react"; //added hook for useState
 import PropTypes from "prop-types";
 
-export default function TextBox(props) {
+function TextBox(props) {
   //declared statevariable called "text" with detault value "Enter text here..." and when we change the value it'll update state
   const [text, setText] = useState("Enter text here...");
   //const [count, setCount] = useState(0); //decalred count with value 0
@@ -11,22 +11,27 @@ export default function TextBox(props) {
   const onUppercaseClick = () => {
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("Text converted to Uppercase", "success");
   };
   const onLowercaseClick = () => {
     let newText = text.toLowerCase();
     setText(newText);
+    props.showAlert("Text converted to Lowercase", "success");
   };
   const onClearClick = () => {
     setText("");
+    props.showAlert("Text cleared successfully", "success");
   };
   const onCopyClick = () => {
     let text = document.getElementById("myTextBox");
     text.select();
     navigator.clipboard.writeText(text.value);
+    props.showAlert("Text copied successfully", "success");
   };
   const onRemoveSpacesClick = () => {
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "));
+    props.showAlert("Text removed extra spaces successfully", "success");
   };
 
   return (
@@ -69,6 +74,8 @@ export default function TextBox(props) {
     </>
   );
 }
+
+export default TextBox;
 
 TextBox.propTypes = {
   heading: PropTypes.string.isRequired,
