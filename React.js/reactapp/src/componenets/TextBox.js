@@ -48,28 +48,31 @@ function TextBox(props) {
             rows="10"
           ></textarea>
         </div>
-        <button className="btn btn-primary mx-2" onClick={onUppercaseClick}>
+        <button className="btn btn-primary mx-2 my-1" onClick={onUppercaseClick}>
           {props.btnUpperText}
         </button>
-        <button className="btn btn-primary mx-2" onClick={onLowercaseClick}>
+        <button className="btn btn-primary mx-2 my-1" onClick={onLowercaseClick}>
           {props.btnLowerText}
         </button>
-        <button className="btn btn-primary mx-2" onClick={onClearClick}>
+        <button className="btn btn-primary mx-2 my-1" onClick={onClearClick}>
           {props.btnClearText}
         </button>
-        <button className="btn btn-primary mx-2" onClick={onCopyClick}>
+        <button className="btn btn-primary mx-2 my-1" onClick={onCopyClick}>
           {props.btnCopyText}
         </button>
-        <button className="btn btn-primary mx-2" onClick={onRemoveSpacesClick}>
+        <button className="btn btn-primary mx-2 my-1" onClick={onRemoveSpacesClick}>
           {props.btnRemoveSpacesText}
         </button>
       </div>
-      <div className="container" style={{color: props.mode === 'light' ? 'black' : 'white'}}>
+      <div className="container my-3" style={{color: props.mode === 'light' ? 'black' : 'white'}}>
         <p>
-          Total {text.split(" ").length} words and {text.length} characters will
+          Total {text.split(" ").filter((e) => { return e.length !== 0; }).length} words and {text.length} characters will
           take approximately {0.008 * text.split(" ").length} minutes to read
           whole text.
         </p>
+        <br/>
+        <h2>Preview</h2>
+        <p>{text.length > 0 ? text : "Enter text for preview" }</p>
       </div>
     </>
   );
