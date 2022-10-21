@@ -23,9 +23,7 @@ function TextBox(props) {
     props.showAlert("Text cleared successfully", "success");
   };
   const onCopyClick = () => {
-    let text = document.getElementById("myTextBox");
-    text.select();
-    navigator.clipboard.writeText(text.value);
+    navigator.clipboard.writeText(text);
     props.showAlert("Text copied successfully", "success");
   };
   const onRemoveSpacesClick = () => {
@@ -37,7 +35,10 @@ function TextBox(props) {
   return (
     <>
       {/* {alert(props.mode)} */}
-      <div className="container" style={{color: props.mode === 'light' ? 'black' : 'white'}}>
+      <div
+        className="container"
+        style={{ color: props.mode === "light" ? "black" : "white" }}
+      >
         <h1>{props.heading}</h1>
         <div className="mb-3">
           <textarea
@@ -48,10 +49,16 @@ function TextBox(props) {
             rows="10"
           ></textarea>
         </div>
-        <button className="btn btn-primary mx-2 my-1" onClick={onUppercaseClick}>
+        <button
+          className="btn btn-primary mx-2 my-1"
+          onClick={onUppercaseClick}
+        >
           {props.btnUpperText}
         </button>
-        <button className="btn btn-primary mx-2 my-1" onClick={onLowercaseClick}>
+        <button
+          className="btn btn-primary mx-2 my-1"
+          onClick={onLowercaseClick}
+        >
           {props.btnLowerText}
         </button>
         <button className="btn btn-primary mx-2 my-1" onClick={onClearClick}>
@@ -60,19 +67,30 @@ function TextBox(props) {
         <button className="btn btn-primary mx-2 my-1" onClick={onCopyClick}>
           {props.btnCopyText}
         </button>
-        <button className="btn btn-primary mx-2 my-1" onClick={onRemoveSpacesClick}>
+        <button
+          className="btn btn-primary mx-2 my-1"
+          onClick={onRemoveSpacesClick}
+        >
           {props.btnRemoveSpacesText}
         </button>
       </div>
-      <div className="container my-3" style={{color: props.mode === 'light' ? 'black' : 'white'}}>
+      <div
+        className="container my-3"
+        style={{ color: props.mode === "light" ? "black" : "white" }}
+      >
         <p>
-          Total {text.split(" ").filter((e) => { return e.length !== 0; }).length} words and {text.length} characters will
-          take approximately {0.008 * text.split(" ").length} minutes to read
-          whole text.
+          Total{" "}
+          {
+            text.split(/\s+/).filter((e) => {
+              return e.length !== 0;
+            }).length
+          }{" "}
+          words and {text.length} characters will take approximately{" "}
+          {0.008 * text.split(" ").length} minutes to read whole text.
         </p>
-        <br/>
+        <br />
         <h2>Preview</h2>
-        <p>{text.length > 0 ? text : "Enter text for preview" }</p>
+        <p>{text.length > 0 ? text : "Enter text for preview"}</p>
       </div>
     </>
   );
