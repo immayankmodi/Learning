@@ -42,8 +42,8 @@ export class News extends Component {
         firstPage: this.state.page === 1,
         lastPage: this.state.page >= (Math.ceil(this.state.totalResults / this.props.pageSize))
     });
-    console.log(url);
-    console.log(this.state.totalResults + " ::> " + this.state.page);
+    //console.log(url);
+    //console.log(this.state.totalResults + " ::> " + this.state.page);
   }
 
   async componentDidMount() {
@@ -75,6 +75,9 @@ export class News extends Component {
                   imgURL={e.urlToImage}
                   newsURL={e.url}
                   imgALT="my alt for img cover"
+                  author={e.author}
+                  date={e.publishedAt}
+                  source={e.source.name}
                 />
               </div>
             );
